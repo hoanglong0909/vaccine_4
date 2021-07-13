@@ -40,11 +40,7 @@ public class UserController {
         return adminDestinationService.findAll();
     }
 
-    @GetMapping("/db")
-    public ModelAndView showdb(){
-        ModelAndView modelAndView = new ModelAndView("/victory/dashBoar");
-        return modelAndView;
-    }
+
 
 
     public void sendEmail(String from,String to, String subject,String content){
@@ -177,42 +173,13 @@ public class UserController {
             user.setTimeVaccine(formattedTime);
             user.setDateVaccine(formattedDate);
             countTime++;
-
-
             oneDayDone++;
             return;
         }
     }
 
-    @GetMapping("/user")
-    public ModelAndView listUsers(){
-        List<User> userList = userService.findAll();
-        ModelAndView modelAndView = new ModelAndView("/victory/user");
-        modelAndView.addObject("user",userList);
-        return modelAndView;
-    }
 
-    @GetMapping("/delete-user/{id}")
-    public ModelAndView deleteUsers(@PathVariable("id") Long id){
-        userService.remove(id);
-        ModelAndView modelAndView = new ModelAndView("/victory/user");
-        return modelAndView;
-    }
 
-    @GetMapping("/edit-user/{id}")
-    public ModelAndView showEdit(@PathVariable("id") Long id){
-        User user = userService.findById(id).get();
-        ModelAndView modelAndView = new ModelAndView("/editForm");
-        modelAndView.addObject("user",user);
-        return modelAndView;
-    }
 
-    @PostMapping("/edit-user")
-    public ModelAndView editUser(@ModelAttribute("user") User user){
-        userService.save(user);
-        ModelAndView modelAndView = new ModelAndView("/editForm");
-        modelAndView.addObject("user",new User());
-        return modelAndView;
-    }
 
 }

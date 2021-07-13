@@ -115,6 +115,11 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 @-moz-keyframes flash {
   0% {
     opacity: 1;

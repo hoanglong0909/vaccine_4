@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/layout/header::header">
 
@@ -112,6 +112,14 @@
                         <div class="add-items d-flex px-3 mb-0">
                             <form class="form w-100">
                                 <div class="form-group d-flex">
+                                    <input
+                                            type="text"
+                                            class="
+                                                    form-control
+                                                    todo-list-input
+                                                "
+                                            placeholder="Add To-do"
+                                    />
                                     <button
                                             type="submit"
                                             class="
@@ -119,6 +127,7 @@
                                                     btn btn-primary
                                                     todo-list-add-btn
                                                 "
+                                            id="add-task"
                                     >
                                         Add
                                     </button>
@@ -413,8 +422,7 @@
             </div>
             <!-- partial -->
             <!-- partial:../../partials/_sidebar.html -->
-            <footer th:replace="/layout/footer">
-
+            <footer th:replace="/layout/footer::footer">
             </footer>
             <!-- partial -->
             <div class="content-wrapper">
@@ -439,7 +447,7 @@
                                             class="
                                                     mdi mdi-basket
                                                     icon-lg
-                                                    text-primary
+                                                    text-success
                                                 "
                                     ></i>
                                     <div class="ml-3">
@@ -470,7 +478,7 @@
                                             class="
                                                     mdi mdi-rocket
                                                     icon-lg
-                                                    text-primary
+                                                    text-warning
                                                 "
                                     ></i>
                                     <div class="ml-3">
@@ -503,7 +511,7 @@
                                             class="
                                                     mdi mdi-diamond
                                                     icon-lg
-                                                    text-primary
+                                                    text-info
                                                 "
                                     ></i>
                                     <div class="ml-3">
@@ -536,7 +544,7 @@
                                             class="
                                                     mdi mdi-chart-line-stacked
                                                     icon-lg
-                                                    text-primary
+                                                    text-danger
                                                 "
                                     ></i>
                                     <div class="ml-3">
@@ -557,11 +565,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">Danh sách khách hàng</h6>
+                                <h6 class="card-title">Order status</h6>
                                 <div class="d-flex table-responsive">
                                     <div class="btn-group mr-2">
                                         <button
-                                                class="btn btn-primary"
+                                                class="btn btn-sm btn-info"
                                         >
                                             <i
                                                     class="
@@ -664,67 +672,30 @@
                                                 <td th:text="${u.CMND}"></td>
                                                 <td th:text="${u.email}"></td>
                                                 <td th:text="${u.dateVaccine}"></td>
-                                                <td>
-                                                    <a>
-                                                        <button type="button" class="btn btn-primary"
-                                                                data-toggle="modal" data-target="#exampleModal"
-                                                                data-whatever="@mdo">Edit
-                                                        </button>
-                                                    </a>
+                                                <td><a th:href="@{edit-user/__${u.id}__}">
+                                                    <div
+                                                            class="
+                                                                    badge
+                                                                    btn-warning
+                                                                    badge-fw">
+                                                        Edit
+                                                    </div>
+                                                </a>
                                                 </td>
                                                 <td><a th:href="@{delete-user/__${u.id}__}">
-                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                    <div
+                                                            class="
+                                                                    badge
+                                                                    btn-danger
+                                                                    badge-fw">
+                                                        Delete
+                                                    </div>
                                                 </a>
                                                 </td>
                                             </tr>
                                         </th:block>
                                         </tbody>
                                     </table>
-                                    <!--                         <--------------------------------- modal-bootraps----------------------------------->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa thông tin khách hàng<span
-                                                            id="exampleModalLabelSpan"></span></h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form role="form" id="registration">
-                                                        <div class="md-6">
-                                                            <label class="form-label">Tên khách hàng</label>
-                                                            <input th:type="text" class="form-control" id="upName"
-                                                                   name="upName">
-                                                        </div>
-                                                        <div class="md-6">
-                                                            <label class="col-form-label">Số CMND:</label>
-                                                            <input type="text" class="form-control" id="upEmail"
-                                                                   name="upEmail">
-                                                        </div>
-                                                        <div class="md-6">
-                                                            <label class="col-form-label">Email</label>
-                                                            <input type="text" class="form-control" id="upPhone"
-                                                                   name="upPhone">
-                                                        </div>
-                                                        <div class="md-6">
-                                                            <label class="col-form-label">Số điện thoại:</label>
-                                                            <input type="text" class="form-control" id="upAddress"
-                                                                   name="upAddress">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Send message</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--                         <--------------------------------- modal-bootraps----------------------------------->
                                 </div>
                                 <div
                                         class="
