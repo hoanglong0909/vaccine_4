@@ -177,16 +177,17 @@ public class UserController {
             user.setTimeVaccine(formattedTime);
             user.setDateVaccine(formattedDate);
             countTime++;
+
+
             oneDayDone++;
             return;
         }
     }
 
-
     @GetMapping("/user")
     public ModelAndView listUsers(){
         List<User> userList = userService.findAll();
-        ModelAndView modelAndView = new ModelAndView("/victory/pages/layout/user");
+        ModelAndView modelAndView = new ModelAndView("/victory/user");
         modelAndView.addObject("user",userList);
         return modelAndView;
     }
@@ -194,7 +195,7 @@ public class UserController {
     @GetMapping("/delete-user/{id}")
     public ModelAndView deleteUsers(@PathVariable("id") Long id){
         userService.remove(id);
-        ModelAndView modelAndView = new ModelAndView("/victory/pages/layout/user");
+        ModelAndView modelAndView = new ModelAndView("/victory/user");
         return modelAndView;
     }
 
